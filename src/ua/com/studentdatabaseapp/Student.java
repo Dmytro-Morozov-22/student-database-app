@@ -20,7 +20,6 @@ public class Student {
 		this.gradeYear = Integer.valueOf(addFieldValue("1 - Freshmen\n2 - Sophmore\n3 - Junior\n4 - Senior\n" + 
 				"Enter student class level: "));
 		setStudentID();
-		System.out.println(firstName + " " + lastName + " " + gradeYear + " " + studentID);	
 	}
 	
 	//Initializes fields from console
@@ -43,23 +42,34 @@ public class Student {
 			System.out.print("Enter course to enroll (Q to quit): ");
 			String course = sc.nextLine();
 			if(!course.equals("Q")) {
-				this.courses = courses.equals("Not enrolled to any") ? "\n" + course : courses + "\n" + course;
-				tuituonBalance = tuituonBalance + costOfCourse;	
+				this.courses = courses.equals("Not enrolled to any") ? "\n  " + course : courses + "\n  " + course;
+				this.tuituonBalance = tuituonBalance + costOfCourse;
 			} else {
 				break;
 			}	
 		} while(true);
-		
-		System.out.println("ENROLLED IN: " + courses);
-		System.out.println("TUITION BALANCE: " + tuituonBalance);
-		sc.close();
 	}
 	
+	//View balance
+	public void viewBalance() {
+		System.out.println("Your balance is: " + this.tuituonBalance);
+	}
 	
+	//Pay tuition
+	public void payTuition() {
+		viewBalance();
+		System.out.print("Enter your payment: ");
+		int payment = sc.nextInt();
+		this.tuituonBalance = tuituonBalance - payment;
+		System.out.println("Thank you for your payment of " + payment);
+		viewBalance();
+	}
 	
-	
-	
-	
-	
-	
+	public String toString() {
+		return "Name: " + this.firstName + " " + this.lastName +
+				"\nGrade Level: " + this.gradeYear +
+				"\nStudent ID: " + this.studentID +
+				"\nCourse Enrolled: " + this.courses +
+				"\nBalance: " + this.tuituonBalance;
+	}	
 }
