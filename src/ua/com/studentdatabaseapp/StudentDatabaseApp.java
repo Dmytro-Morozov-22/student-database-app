@@ -20,7 +20,7 @@ public class StudentDatabaseApp {
 			}
 			
 			for (int k = 0; k < numberOfStudent; k++) 
-				System.out.println(students[k].toString());
+				System.out.println(students[k].toString() + "\n-------------------");
 			
 		}
 		
